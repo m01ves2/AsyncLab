@@ -28,9 +28,9 @@ namespace AsyncLab
         public static void Work()
         {
             for (int i = 0; i < 1_000_000; i++) {
-                //lock (_lock) {
+                lock (_lock) {
                     counter++;
-                //}
+                }
             }
         }
     }
