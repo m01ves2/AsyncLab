@@ -13,7 +13,7 @@ namespace AsyncLab
 
             List<Thread> threads = new List<Thread>();
 
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 2; i++) {
                 Thread t = new Thread(Work);
                 threads.Add(t);
                 t.Start();
@@ -30,13 +30,14 @@ namespace AsyncLab
 
             sw.Stop();
             Console.WriteLine(counter);
-            Console.WriteLine($"Time: {sw.ElapsedMilliseconds} ms"); //5700 msec
+            Console.WriteLine($"Time: {sw.ElapsedMilliseconds} ms"); //2550 msec
         }
 
         public static void Work()
         {
-            for (int i = 0; i < 1_000_000; i++) {
-                Interlocked.Increment(ref counter);
+            for (int i = 0; i < 50_000_000; i++) {
+                //Interlocked.Increment(ref counter);
+                counter++;
             }
         }
     }
