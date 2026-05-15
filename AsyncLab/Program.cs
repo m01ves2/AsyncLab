@@ -11,11 +11,8 @@ namespace AsyncLab
         {
             var sw = Stopwatch.StartNew();
 
-            for (int i = 0; i < 10; i++) {
-                ThreadPool.QueueUserWorkItem(_ =>
-                {
-                    Work();
-                });
+            for (int i = 0; i < 50; i++) {
+                ThreadPool.QueueUserWorkItem(Work);
             }
 
 
@@ -28,13 +25,10 @@ namespace AsyncLab
             Console.WriteLine($"Time: {sw.ElapsedMilliseconds} ms");
         }
 
-        public static void Work()
+        public static void Work(object? state)
         {
-            for (int i = 0; i < 1_000_000; i++) {
-                lock (_lock) {
-                    counter++;
-                }
-            }
+            Console.WriteLine(
+                $"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
         }
     }
 }
