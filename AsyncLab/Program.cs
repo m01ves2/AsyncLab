@@ -11,15 +11,17 @@ namespace AsyncLab
         {
             var sw = Stopwatch.StartNew();
 
-            Thread t1 = new Thread(Work);
-            Thread t2 = new Thread(Work);
+            List<Thread> threads = new List<Thread>();
 
-            t1.Start();
-            t2.Start();
+            for (int i = 0; i < 100; i++) {
+                Thread t = new Thread(Work);
+                threads.Add(t);
+                t.Start();
+            }
 
-            t1.Join();
-            t2.Join();
-
+            foreach (Thread t in threads) {
+                t.Join();
+            }
 
 
             // важно: даём ThreadPool время завершить работу
@@ -28,12 +30,12 @@ namespace AsyncLab
 
             sw.Stop();
             Console.WriteLine(counter);
-            Console.WriteLine($"Time: {sw.ElapsedMilliseconds} ms"); //3100 msec
+            Console.WriteLine($"Time: {sw.ElapsedMilliseconds} ms"); //5700 msec
         }
 
         public static void Work()
         {
-            for (int i = 0; i < 50_000_000; i++) {
+            for (int i = 0; i < 1_000_000; i++) {
                 Interlocked.Increment(ref counter);
             }
         }
