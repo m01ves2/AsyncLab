@@ -11,34 +11,22 @@ namespace AsyncLab
         {
             var sw = Stopwatch.StartNew();
 
-            List<Thread> threads = new List<Thread>();
-
-            for (int i = 0; i < 2; i++) {
-                Thread t = new Thread(Work);
-                threads.Add(t);
-                t.Start();
-            }
-
-            foreach (Thread t in threads) {
-                t.Join();
-            }
-
-
-            // важно: даём ThreadPool время завершить работу
-            Thread.Sleep(2000);
-
+            DoCpuWork();
 
             sw.Stop();
             Console.WriteLine(counter);
             Console.WriteLine($"Time: {sw.ElapsedMilliseconds} ms"); //2550 msec
         }
 
-        public static void Work()
+        public static void DoCpuWork()
         {
-            for (int i = 0; i < 50_000_000; i++) {
-                //Interlocked.Increment(ref counter);
-                counter++;
+            double value = 0;
+
+            for (int i = 0; i < 500_000_000; i++) {
+                value += Math.Sqrt(i);
             }
+
+            Console.WriteLine(value);
         }
     }
 }
