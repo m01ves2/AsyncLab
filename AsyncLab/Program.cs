@@ -10,8 +10,18 @@ namespace AsyncLab
         public static void Main(string[] args)
         {
             var sw = Stopwatch.StartNew();
+            List<Thread> threads = new List<Thread>();
 
-            DoWaitingWork();
+            for (int i = 0; i < 100; i++) {
+                Thread t = new Thread(DoWaitingWork);
+                threads.Add(t);
+                t.Start();
+            }
+
+            foreach (Thread t in threads) {
+                t.Join();
+            }
+
 
             sw.Stop();
             Console.WriteLine(counter);
