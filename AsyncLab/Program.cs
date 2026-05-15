@@ -11,22 +11,16 @@ namespace AsyncLab
         {
             var sw = Stopwatch.StartNew();
 
-            DoCpuWork();
+            DoWaitingWork();
 
             sw.Stop();
             Console.WriteLine(counter);
-            Console.WriteLine($"Time: {sw.ElapsedMilliseconds} ms"); //2550 msec
+            Console.WriteLine($"Time: {sw.ElapsedMilliseconds} ms"); //3000 msec
         }
 
-        public static void DoCpuWork()
+        public static void DoWaitingWork()
         {
-            double value = 0;
-
-            for (int i = 0; i < 500_000_000; i++) {
-                value += Math.Sqrt(i);
-            }
-
-            Console.WriteLine(value);
+            Thread.Sleep(3000);
         }
     }
 }
