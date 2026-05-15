@@ -11,14 +11,17 @@ namespace AsyncLab
         {
             var sw = Stopwatch.StartNew();
 
-            Thread t1 = new Thread(Work);
-            Thread t2 = new Thread(Work);
+            for (int i = 0; i < 10; i++) {
+                ThreadPool.QueueUserWorkItem(_ =>
+                {
+                    Work();
+                });
+            }
 
-            t1.Start();
-            t2.Start();
 
-            t1.Join();
-            t2.Join();
+            // важно: даём ThreadPool время завершить работу
+            Thread.Sleep(2000);
+
 
             sw.Stop();
             Console.WriteLine(counter);
@@ -28,7 +31,9 @@ namespace AsyncLab
         public static void Work()
         {
             for (int i = 0; i < 1_000_000; i++) {
-                Interlocked.Increment(ref counter);
+                lock (_lock) {
+                    counter++;
+                }
             }
         }
     }
