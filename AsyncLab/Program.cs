@@ -7,16 +7,11 @@ namespace AsyncLab
     {
         public static async Task Main()
         {
-            Console.WriteLine("Before");
+            Console.WriteLine("Before await");
 
-            await SimpleAsync();
+            await Task.Delay(2000);
 
-            Console.WriteLine("After");
-        }
-
-        public static async Task SimpleAsync()
-        {
-            Console.WriteLine("Inside method");
+            Console.WriteLine("After await");
         }
     }
 }
