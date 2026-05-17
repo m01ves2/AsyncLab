@@ -5,13 +5,13 @@ namespace AsyncLab
 {
     public class Program
     {
-        public static async Task Main()
+        public static void Main()
         {
-            Console.WriteLine("Before await");
+            Console.WriteLine("Before");
 
-            await Task.Delay(2000);
+            Task.Delay(2000).Wait();
 
-            Console.WriteLine("After await");
+            Console.WriteLine("After");
         }
     }
 }
