@@ -7,11 +7,18 @@ namespace AsyncLab
     {
         public static void Main()
         {
-            Console.WriteLine("Before");
+            Console.WriteLine("Start");
 
-            Task.Delay(2000).Wait();
+            int result = CalculateAsync().Result;
 
-            Console.WriteLine("After");
+            Console.WriteLine(result);
+        }
+
+        public static async Task<int> CalculateAsync()
+        {
+            await Task.Delay(2000);
+
+            return 42;
         }
     }
 }
