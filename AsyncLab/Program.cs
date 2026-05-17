@@ -5,26 +5,18 @@ namespace AsyncLab
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static async Task Main()
         {
-            Console.WriteLine($"Main start thread: {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine("Before");
 
-            Task task = DoWorkAsync();
+            await SimpleAsync();
 
-            Console.WriteLine("Task started");
-
-            await task;
-
-            Console.WriteLine($"Main resumed thread: {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine("After");
         }
 
-        public static async Task DoWorkAsync()
+        public static async Task SimpleAsync()
         {
-            Console.WriteLine($"Before await: {Thread.CurrentThread.ManagedThreadId}");
-
-            await Task.Delay(2000);
-
-            Console.WriteLine($"After await: {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine("Inside method");
         }
     }
 }
