@@ -5,20 +5,22 @@ namespace AsyncLab
 {
     public class Program
     {
-        public static void Main()
+        public static async Task Main()
         {
-            Console.WriteLine("Start");
+            Console.WriteLine($"Main start: {Thread.CurrentThread.ManagedThreadId}");
 
-            int result = CalculateAsync().Result;
+            await DemoAsync();
 
-            Console.WriteLine(result);
+            Console.WriteLine($"Main resumed: {Thread.CurrentThread.ManagedThreadId}");
         }
 
-        public static async Task<int> CalculateAsync()
+        public static async Task DemoAsync()
         {
+            Console.WriteLine($"Before await: {Thread.CurrentThread.ManagedThreadId}");
+
             await Task.Delay(2000);
 
-            return 42;
+            Console.WriteLine($"After await: {Thread.CurrentThread.ManagedThreadId}");
         }
     }
 }
