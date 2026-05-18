@@ -7,20 +7,30 @@ namespace AsyncLab
     {
         public static async Task Main()
         {
-            Console.WriteLine($"Main start: {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine($"Main thread: {Thread.CurrentThread.ManagedThreadId}");
 
-            await DemoAsync();
+            var tasks = new List<Task>();
 
-            Console.WriteLine($"Main resumed: {Thread.CurrentThread.ManagedThreadId}");
+            Stopwatch sw = Stopwatch.StartNew();
+
+            for (int i = 0; i < 100; i++) {
+                tasks.Add(HandleRequest(i));
+            }
+
+            await Task.WhenAll(tasks);
+
+            sw.Stop();
+
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds} ms");
         }
 
-        public static async Task DemoAsync()
+        public static async Task HandleRequest(int id)
         {
-            Console.WriteLine($"Before await: {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine($"Request {id} started | Thread {Thread.CurrentThread.ManagedThreadId}");
 
-            await Task.Delay(2000);
+            Thread.Sleep(1000);
 
-            Console.WriteLine($"After await: {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine($"Request {id} finished | Thread {Thread.CurrentThread.ManagedThreadId}");
         }
     }
 }
