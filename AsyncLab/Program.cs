@@ -25,10 +25,10 @@ namespace AsyncLab
             Console.WriteLine($"Done in {sw.ElapsedMilliseconds} ms");
         }
 
-        public static void Work(int id)
+        public static async Task  Work(int id)
         {
             // имитация CPU + blocking
-            Thread.Sleep(200);
+            await Task.Delay(200);
 
             Console.WriteLine($"Work {id} done on thread {Thread.CurrentThread.ManagedThreadId}");
         }
