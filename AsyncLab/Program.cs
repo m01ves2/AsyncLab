@@ -9,28 +9,28 @@ namespace AsyncLab
         {
             Console.WriteLine($"Main thread: {Thread.CurrentThread.ManagedThreadId}");
 
-            var tasks = new List<Task>();
-
             Stopwatch sw = Stopwatch.StartNew();
 
-            for (int i = 0; i < 100; i++) {
-                tasks.Add(HandleRequest(i));
+            var tasks = new List<Task>();
+
+            for (int i = 0; i < 200; i++) {
+                int id = i;
+                tasks.Add(Task.Run(() => Work(id)));
             }
 
             await Task.WhenAll(tasks);
 
             sw.Stop();
 
-            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds} ms");
+            Console.WriteLine($"Done in {sw.ElapsedMilliseconds} ms");
         }
 
-        public static async Task HandleRequest(int id)
+        public static void Work(int id)
         {
-            Console.WriteLine($"Request {id} started | Thread {Thread.CurrentThread.ManagedThreadId}");
+            // имитация CPU + blocking
+            Thread.Sleep(200);
 
-            Thread.Sleep(1000);
-
-            Console.WriteLine($"Request {id} finished | Thread {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine($"Work {id} done on thread {Thread.CurrentThread.ManagedThreadId}");
         }
     }
 }
