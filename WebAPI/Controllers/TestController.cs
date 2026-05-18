@@ -7,16 +7,34 @@ namespace WebAPI.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpGet("load-async")]
+        public async Task<IActionResult> LoadAsync()
         {
-            Console.WriteLine(
-                $"START Thread: {Thread.CurrentThread.ManagedThreadId}");
+            List<Task> tasks = new();
 
-            await Task.Delay(5000);
+            for (int i = 0; i < 100; i++) {
+                tasks.Add(Task.Delay(5000));
+            }
 
-            Console.WriteLine(
-                $"END Thread: {Thread.CurrentThread.ManagedThreadId}");
+            await Task.WhenAll(tasks);
+
+            return Ok();
+        }
+
+
+        [HttpGet("load-sync")]
+        public IActionResult LoadSync()
+        {
+            List<Task> tasks = new();
+
+            for (int i = 0; i < 100; i++) {
+                tasks.Add(Task.Run(() =>
+                {
+                    Thread.Sleep(5000);
+                }));
+            }
+
+            Task.WaitAll(tasks.ToArray());
 
             return Ok();
         }
