@@ -20,6 +20,14 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 //Add middleware
+app.Use(async (HttpContext context, RequestDelegate next) =>
+{
+    Console.WriteLine("SHORT-CIRCUIT");
+
+    await context.Response.WriteAsync(
+        "Blocked by middleware");
+});
+
 app.Use(async (context, next) =>
 {
     Console.WriteLine(
