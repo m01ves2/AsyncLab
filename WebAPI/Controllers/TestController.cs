@@ -26,6 +26,18 @@ namespace WebAPI.Controllers
 
             return Ok();
         }
+
+        [HttpGet("starve-async")]
+        public async Task<IActionResult> StarveAsync()
+        {
+            Console.WriteLine($"START {DateTime.Now:HH:mm:ss.fff} | Thread {Thread.CurrentThread.ManagedThreadId}");
+
+            await Task.Delay(30000);
+
+            Console.WriteLine($"END {DateTime.Now:HH:mm:ss.fff} | Thread {Thread.CurrentThread.ManagedThreadId}");
+
+            return Ok();
+        }
     }
 
 }
