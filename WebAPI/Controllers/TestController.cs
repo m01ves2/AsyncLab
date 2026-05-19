@@ -14,5 +14,18 @@ namespace WebAPI.Controllers
 
             throw new Exception("Kaboom");
         }
+
+        [HttpGet("starve")]
+        public IActionResult Starve()
+        {
+            Console.WriteLine($"START {DateTime.Now:HH:mm:ss.fff} | Thread {Thread.CurrentThread.ManagedThreadId}");
+
+            Thread.Sleep(30000);
+
+            Console.WriteLine($"END {DateTime.Now:HH:mm:ss.fff} | Thread {Thread.CurrentThread.ManagedThreadId}");
+
+            return Ok();
+        }
     }
+
 }
