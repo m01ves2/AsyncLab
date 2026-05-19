@@ -19,6 +19,18 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+//Add middleware
+app.Use(async (context, next) =>
+{
+    Console.WriteLine(
+        $"BEFORE | Thread {Thread.CurrentThread.ManagedThreadId}");
+
+    await next();
+
+    Console.WriteLine(
+        $"AFTER | Thread {Thread.CurrentThread.ManagedThreadId}");
+});
+
 app.MapControllers();
 
 app.Run();

@@ -12,7 +12,7 @@ namespace WebAPI.Controllers
         {
             List<Task> tasks = new();
 
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 1; i++) {
                 tasks.Add(Task.Delay(5000));
             }
 
