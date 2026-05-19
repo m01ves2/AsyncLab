@@ -22,21 +22,20 @@ app.UseAuthorization();
 //Add middleware
 app.Use(async (HttpContext context, RequestDelegate next) =>
 {
-    Console.WriteLine("SHORT-CIRCUIT");
+    try {
+        Console.WriteLine("EXCEPTION MIDDLEWARE BEFORE");
 
-    await context.Response.WriteAsync(
-        "Blocked by middleware");
-});
+        await next(context);
 
-app.Use(async (context, next) =>
-{
-    Console.WriteLine(
-        $"BEFORE | Thread {Thread.CurrentThread.ManagedThreadId}");
+        Console.WriteLine("EXCEPTION MIDDLEWARE AFTER");
+    }
+    catch (Exception ex) {
+        Console.WriteLine($"EXCEPTION CAUGHT: {ex.Message}");
 
-    await next();
+        context.Response.StatusCode = 500;
 
-    Console.WriteLine(
-        $"AFTER | Thread {Thread.CurrentThread.ManagedThreadId}");
+        await context.Response.WriteAsync("Something went wrong");
+    }
 });
 
 app.MapControllers();

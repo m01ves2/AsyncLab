@@ -7,36 +7,12 @@ namespace WebAPI.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
-        [HttpGet("load-async")]
-        public async Task<IActionResult> LoadAsync()
+        [HttpGet("boom")]
+        public IActionResult Boom()
         {
-            List<Task> tasks = new();
+            Console.WriteLine("CONTROLLER");
 
-            for (int i = 0; i < 1; i++) {
-                tasks.Add(Task.Delay(5000));
-            }
-
-            await Task.WhenAll(tasks);
-
-            return Ok();
-        }
-
-
-        [HttpGet("load-sync")]
-        public IActionResult LoadSync()
-        {
-            List<Task> tasks = new();
-
-            for (int i = 0; i < 100; i++) {
-                tasks.Add(Task.Run(() =>
-                {
-                    Thread.Sleep(5000);
-                }));
-            }
-
-            Task.WaitAll(tasks.ToArray());
-
-            return Ok();
+            throw new Exception("Kaboom");
         }
     }
 }
