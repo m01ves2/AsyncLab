@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex04.BlockingVsAsync", "Ex0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex05.CpuBoundVsAsync", "Ex05.CpuBoundVsAsync\Ex05.CpuBoundVsAsync.csproj", "{21A3D918-0712-40FB-90CA-C29692D21507}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex06.ThreadPoolStarvation", "Ex06.ThreadPoolStarvation\Ex06.ThreadPoolStarvation.csproj", "{0B4727D2-C2A7-4B51-B580-9CAE1F72A827}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{21A3D918-0712-40FB-90CA-C29692D21507}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21A3D918-0712-40FB-90CA-C29692D21507}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21A3D918-0712-40FB-90CA-C29692D21507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B4727D2-C2A7-4B51-B580-9CAE1F72A827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B4727D2-C2A7-4B51-B580-9CAE1F72A827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B4727D2-C2A7-4B51-B580-9CAE1F72A827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B4727D2-C2A7-4B51-B580-9CAE1F72A827}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
