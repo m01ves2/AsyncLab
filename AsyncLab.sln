@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex08.FakePipeline", "Ex08.F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex09.ExceptionFlow", "Ex09.ExceptionFlow\Ex09.ExceptionFlow.csproj", "{EE4B1A6E-C1DF-49C0-A707-C99EC41E9FE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex10.TaskCombinators", "Ex10.TaskCombinators\Ex10.TaskCombinators.csproj", "{8F27792D-CDD5-4C33-9668-703F83A7BBB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{EE4B1A6E-C1DF-49C0-A707-C99EC41E9FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE4B1A6E-C1DF-49C0-A707-C99EC41E9FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE4B1A6E-C1DF-49C0-A707-C99EC41E9FE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F27792D-CDD5-4C33-9668-703F83A7BBB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F27792D-CDD5-4C33-9668-703F83A7BBB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F27792D-CDD5-4C33-9668-703F83A7BBB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F27792D-CDD5-4C33-9668-703F83A7BBB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
