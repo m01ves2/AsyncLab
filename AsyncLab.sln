@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex10.TaskCombinators", "Ex1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex11.CancellationToken", "Ex11.CancellationToken\Ex11.CancellationToken.csproj", "{94098932-0FBB-4524-8759-B54DFDDD53E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex12.TimeoutPatterns", "Ex12.TimeoutPatterns\Ex12.TimeoutPatterns.csproj", "{F1451665-4C24-4FA8-AF99-BDFC7D8DDCBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{94098932-0FBB-4524-8759-B54DFDDD53E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94098932-0FBB-4524-8759-B54DFDDD53E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94098932-0FBB-4524-8759-B54DFDDD53E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1451665-4C24-4FA8-AF99-BDFC7D8DDCBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1451665-4C24-4FA8-AF99-BDFC7D8DDCBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1451665-4C24-4FA8-AF99-BDFC7D8DDCBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1451665-4C24-4FA8-AF99-BDFC7D8DDCBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
